@@ -1,0 +1,102 @@
+.loopContainer {
+    overflow: hidden;
+    padding: 4rem 0;
+    background: var(--bg-dark);
+    border-top: 1px solid rgba(255, 255, 255, 0.02);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.02);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.loopTitle {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 2.5rem;
+    font-weight: 600;
+}
+
+.fadeCover {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 2;
+    background: linear-gradient(to right, var(--bg-dark) 0%, transparent 15%, transparent 85%, var(--bg-dark) 100%);
+}
+
+.track {
+    display: flex;
+    width: max-content;
+    animation: scrollLeft 35s linear infinite;
+    gap: 5rem;
+    padding-left: 5rem;
+}
+
+.track:hover {
+    animation-play-state: paused;
+}
+
+.logoItem {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    transition: all 0.3s ease;
+    cursor: default;
+    white-space: nowrap;
+    opacity: 0.9;
+}
+
+.logoItem:hover {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+.iconImage {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+}
+
+/* AWS original is black, invert for dark mode */
+.logoItem[title="AWS"] .iconImage,
+.logoItem[title="Next.JS"] .iconImage {
+    filter: invert(1);
+}
+
+.iconLabel {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--text-main);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+@keyframes scrollLeft {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+@media (max-width: 768px) {
+    .iconImage {
+        width: 40px;
+        height: 40px;
+    }
+
+    .iconLabel {
+        font-size: 1rem;
+    }
+
+    .track {
+        gap: 3rem;
+    }
+}
