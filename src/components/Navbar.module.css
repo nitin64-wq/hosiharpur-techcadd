@@ -73,6 +73,7 @@
     border: none;
     cursor: pointer;
     white-space: nowrap;
+    font-family: inherit;
 }
 
 .bookDemoBtn:hover {

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styles from './Navbar.module.css';
 
-const Navbar = () => {
+const Navbar = ({ onEnquiryClick }) => {
     const [isOpen, setIsOpen] = useState(false);
 
     return (
@@ -99,7 +99,7 @@ const Navbar = () => {
                 <a href="#contact-page" onClick={() => setIsOpen(false)}>Contact</a>
             </div>
             <div className={styles.rightSection}>
-                <a href="#demo" className={styles.bookDemoBtn}>Book Demo &rarr;</a>
+                <button className={styles.bookDemoBtn} onClick={(e) => { e.preventDefault(); if (onEnquiryClick) onEnquiryClick(); }}>Book Demo →</button>
                 <div className={styles.hamburger} onClick={() => setIsOpen(!isOpen)}>
                     <span className={styles.bar}></span>
                     <span className={styles.bar}></span>

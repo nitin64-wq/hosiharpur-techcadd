@@ -15,10 +15,20 @@ import WhyChooseUs from './pages/WhyChooseUs';
 import Gallery from './pages/Gallery';
 import Reviews from './pages/Reviews';
 import ContactPage from './pages/ContactPage';
+import EnquiryPopup from './components/EnquiryPopup';
 
 function App() {
   const [activeCourse, setActiveCourse] = useState(null);
   const [showContactPage, setShowContactPage] = useState(false);
+  const [showEnquiry, setShowEnquiry] = useState(false);
+
+  // Auto-show enquiry popup on every page load/refresh
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowEnquiry(true);
+    }, 1000);
+    return () => clearTimeout(timer);
+  }, []);
 
   useEffect(() => {
     const handleHashChange = () => {
@@ -56,7 +66,7 @@ function App() {
 
   return (
     <>
-      <Navbar />
+      <Navbar onEnquiryClick={() => setShowEnquiry(true)} />
       <main>
         {showContactPage ? (
           <ContactPage onClose={closeContactPage} />
@@ -82,6 +92,9 @@ function App() {
         <p>&copy; 2026 TechCadd Hoshiarpur / Phagwara. All rights reserved.</p>
         <p>Designed for Excellence</p>
       </footer>
+
+      {/* Global Enquiry Popup */}
+      <EnquiryPopup isOpen={showEnquiry} onClose={() => setShowEnquiry(false)} />
     </>
   );
 }
