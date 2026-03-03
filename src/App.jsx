@@ -13,17 +13,26 @@ import Contact from './pages/Contact';
 import CourseDetail from './components/CourseDetail';
 import WhyChooseUs from './pages/WhyChooseUs';
 import Gallery from './pages/Gallery';
+import Reviews from './pages/Reviews';
+import ContactPage from './pages/ContactPage';
 
 function App() {
   const [activeCourse, setActiveCourse] = useState(null);
+  const [showContactPage, setShowContactPage] = useState(false);
 
   useEffect(() => {
     const handleHashChange = () => {
       const hash = window.location.hash;
-      if (hash && (hash.startsWith('#course-') || hash.startsWith('#after12-') || hash.startsWith('#basic-'))) {
+      if (hash === '#contact-page') {
+        setShowContactPage(true);
+        setActiveCourse(null);
+        window.scrollTo(0, 0);
+      } else if (hash && (hash.startsWith('#course-') || hash.startsWith('#after12-') || hash.startsWith('#basic-'))) {
         setActiveCourse(hash.substring(1)); // removes the #
+        setShowContactPage(false);
       } else {
         setActiveCourse(null);
+        setShowContactPage(false);
       }
     };
 
@@ -38,11 +47,20 @@ function App() {
     setActiveCourse(null);
     window.location.hash = ''; // Clear the hash when closing the template
   };
+
+  const closeContactPage = () => {
+    setShowContactPage(false);
+    window.location.hash = '';
+    window.scrollTo(0, 0);
+  };
+
   return (
     <>
       <Navbar />
       <main>
-        {activeCourse ? (
+        {showContactPage ? (
+          <ContactPage onClose={closeContactPage} />
+        ) : activeCourse ? (
           <CourseDetail courseId={activeCourse} onClose={clearCourse} />
         ) : (
           <>
@@ -53,6 +71,7 @@ function App() {
             <Courses onCourseClick={() => setActiveCourse('basic-computer')} />
             <About />
             <Gallery />
+            <Reviews />
             <Admissions />
             <Contact />
           </>

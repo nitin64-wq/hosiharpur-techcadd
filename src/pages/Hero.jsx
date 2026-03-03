@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './Hero.module.css';
 import Orb from './Orb';
+import gourav_sir from '../assets/gourav_sir.png';
 
 const Hero = () => {
     return (
@@ -32,6 +33,7 @@ const Hero = () => {
             <div className={styles.orbContainer}>
                 <div className={styles.orbWrapper}>
                     <Orb hoverIntensity={3} rotateOnHover hue={0} forceHoverState={false} backgroundColor="#0a0a0f" />
+                    <img src={gourav_sir} alt="Gourav Sir" className={styles.heroImg} />
                 </div>
             </div>
         </section>

@@ -2,6 +2,7 @@ import { Mesh, Program, Renderer, Triangle, Vec3 } from 'ogl';
 import React, { useEffect, useRef } from 'react';
 import './Orb.css';
 
+
 function hslToRgb(h, s, l) {
     let r, g, b;
 

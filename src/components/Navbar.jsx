@@ -96,7 +96,7 @@ const Navbar = () => {
                     </div>
                 </div>
 
-                <a href="#contact" onClick={() => setIsOpen(false)}>Contact</a>
+                <a href="#contact-page" onClick={() => setIsOpen(false)}>Contact</a>
             </div>
             <div className={styles.rightSection}>
                 <a href="#demo" className={styles.bookDemoBtn}>Book Demo &rarr;</a>

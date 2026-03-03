@@ -120,6 +120,17 @@
     pointer-events: auto;
 }
 
+.heroImg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 70%;
+    max-height: 70%;
+    object-fit: contain;
+    z-index: 1;
+}
+
 @media (max-width: 992px) {
     .hero {
         flex-direction: column;
