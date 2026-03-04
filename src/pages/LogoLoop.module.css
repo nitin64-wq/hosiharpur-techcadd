@@ -2,8 +2,8 @@
     overflow: hidden;
     padding: 4rem 0;
     background: var(--bg-dark);
-    border-top: 1px solid rgba(255, 255, 255, 0.02);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.02);
+    border-top: 1px solid var(--border-glass);
+    border-bottom: 1px solid var(--border-glass);
     position: relative;
     display: flex;
     flex-direction: column;

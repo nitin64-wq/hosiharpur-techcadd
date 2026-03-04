@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { motion, useMotionValue, useTransform } from 'framer-motion';
 import styles from './About.module.css';
 
@@ -12,7 +12,7 @@ const cardData = [
 const About = () => {
     const [cards, setCards] = useState(cardData);
 
-    const sendToBack = (id) => {
+    const sendToBack = useCallback((id) => {
         setCards((prev) => {
             const newCards = [...prev];
             const index = newCards.findIndex((c) => c.id === id);
@@ -20,7 +20,26 @@ const About = () => {
             newCards.unshift(movedCard);
             return newCards;
         });
-    };
+    }, []);
+
+    // Auto-shuffle every 5 seconds
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setCards((prev) => {
+                // Send the top card (last in the array) to back
+                const topCard = prev[prev.length - 1];
+                if (topCard) {
+                    const newCards = [...prev];
+                    const [movedCard] = newCards.splice(newCards.length - 1, 1);
+                    newCards.unshift(movedCard);
+                    return newCards;
+                }
+                return prev;
+            });
+        }, 3000);
+
+        return () => clearInterval(interval);
+    }, []);
 
     return (
         <section id="about" className={styles.aboutSection}>

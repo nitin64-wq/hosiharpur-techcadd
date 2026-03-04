@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styles from './Navbar.module.css';
+import ThemeToggle from './ThemeToggle';
 
 const Navbar = ({ onEnquiryClick }) => {
     const [isOpen, setIsOpen] = useState(false);
@@ -99,6 +100,7 @@ const Navbar = ({ onEnquiryClick }) => {
                 <a href="#contact-page" onClick={() => setIsOpen(false)}>Contact</a>
             </div>
             <div className={styles.rightSection}>
+                <ThemeToggle />
                 <button className={styles.bookDemoBtn} onClick={(e) => { e.preventDefault(); if (onEnquiryClick) onEnquiryClick(); }}>Book Demo →</button>
                 <div className={styles.hamburger} onClick={() => setIsOpen(!isOpen)}>
                     <span className={styles.bar}></span>

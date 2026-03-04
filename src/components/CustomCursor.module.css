@@ -1,0 +1,136 @@
+/* ═══════════════════════════════════════════════════════════
+   CUSTOM CURSOR — Premium Dot + Ring
+   ═══════════════════════════════════════════════════════════ */
+
+/* Hide default cursor globally */
+:global(body) {
+    cursor: none !important;
+}
+
+:global(a),
+:global(button),
+:global([role="button"]),
+:global(input),
+:global(textarea),
+:global(select) {
+    cursor: none !important;
+}
+
+/* ─── Dot (inner) ─── */
+.dot {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--primary);
+    pointer-events: none;
+    z-index: 99999;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+        height 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+        background 0.3s ease,
+        opacity 0.3s ease,
+        box-shadow 0.3s ease;
+    box-shadow: 0 0 10px rgba(99, 102, 241, 0.5);
+    will-change: left, top;
+}
+
+.dot.visible {
+    opacity: 1;
+}
+
+/* Hover state — dot grows slightly */
+.dot.dotHover {
+    width: 6px;
+    height: 6px;
+    background: white;
+    box-shadow: 0 0 15px rgba(99, 102, 241, 0.8);
+}
+
+/* Click state — dot shrinks */
+.dot.dotClick {
+    width: 4px;
+    height: 4px;
+    background: var(--secondary);
+}
+
+/* ─── Ring (outer) ─── */
+.ring {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1.5px solid var(--primary);
+    pointer-events: none;
+    z-index: 99998;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+        height 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+        border-color 0.3s ease,
+        opacity 0.4s ease,
+        background 0.3s ease;
+    will-change: left, top;
+}
+
+.ring.visible {
+    opacity: 0.6;
+}
+
+/* Hover state — ring expands with fill */
+.ring.ringHover {
+    width: 50px;
+    height: 50px;
+    border-color: var(--primary);
+    background: rgba(99, 102, 241, 0.08);
+    opacity: 0.8;
+}
+
+/* Click state — ring contracts */
+.ring.ringClick {
+    width: 28px;
+    height: 28px;
+    border-color: var(--secondary);
+    opacity: 1;
+}
+
+/* ─── Light theme adjustments ─── */
+:global([data-theme="light"]) .dot {
+    box-shadow: 0 0 10px rgba(99, 102, 241, 0.4);
+}
+
+:global([data-theme="light"]) .dot.dotHover {
+    background: var(--primary);
+    box-shadow: 0 0 15px rgba(99, 102, 241, 0.6);
+}
+
+:global([data-theme="light"]) .ring.ringHover {
+    background: rgba(99, 102, 241, 0.06);
+}
+
+/* ─── Disable on mobile ─── */
+@media (hover: none) and (pointer: coarse) {
+
+    .dot,
+    .ring {
+        display: none !important;
+    }
+
+    :global(body) {
+        cursor: auto !important;
+    }
+
+    :global(a),
+    :global(button),
+    :global([role="button"]),
+    :global(input),
+    :global(textarea),
+    :global(select) {
+        cursor: auto !important;
+    }
+}

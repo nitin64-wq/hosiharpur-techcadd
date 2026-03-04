@@ -16,6 +16,8 @@ import Gallery from './pages/Gallery';
 import Reviews from './pages/Reviews';
 import ContactPage from './pages/ContactPage';
 import EnquiryPopup from './components/EnquiryPopup';
+import Footer from './components/Footer';
+import CustomCursor from './components/CustomCursor';
 
 function App() {
   const [activeCourse, setActiveCourse] = useState(null);
@@ -66,6 +68,7 @@ function App() {
 
   return (
     <>
+      <CustomCursor />
       <Navbar onEnquiryClick={() => setShowEnquiry(true)} />
       <main>
         {showContactPage ? (
@@ -88,10 +91,7 @@ function App() {
         )}
       </main>
 
-      <footer className={styles.footer}>
-        <p>&copy; 2026 TechCadd Hoshiarpur / Phagwara. All rights reserved.</p>
-        <p>Designed for Excellence</p>
-      </footer>
+      <Footer />
 
       {/* Global Enquiry Popup */}
       <EnquiryPopup isOpen={showEnquiry} onClose={() => setShowEnquiry(false)} />

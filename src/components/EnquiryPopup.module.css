@@ -7,7 +7,7 @@
     position: fixed;
     inset: 0;
     z-index: 9999;
-    background: rgba(0, 0, 0, 0.65);
+    background: var(--overlay-bg);
     backdrop-filter: blur(6px);
     -webkit-backdrop-filter: blur(6px);
     display: flex;
@@ -29,8 +29,8 @@
 
 /* Modal Card */
 .modal {
-    background: linear-gradient(145deg, rgba(18, 18, 30, 0.97), rgba(12, 12, 22, 0.99));
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: var(--dropdown-bg);
+    border: 1px solid var(--border-glass);
     border-radius: 24px;
     width: 100%;
     max-width: 480px;
@@ -90,7 +90,7 @@
     right: 16px;
     width: 36px;
     height: 36px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--border-glass);
     border-radius: 10px;
     background: rgba(255, 255, 255, 0.04);
     color: var(--text-muted);
@@ -182,8 +182,8 @@
 .formInput {
     width: 100%;
     padding: 0.85rem 1rem;
-    background: rgba(0, 0, 0, 0.3);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: var(--input-bg);
+    border: 1px solid var(--border-glass);
     border-radius: 12px;
     color: var(--text-main);
     font-family: inherit;
@@ -194,7 +194,7 @@
 .formInput:focus {
     outline: none;
     border-color: var(--primary);
-    background: rgba(0, 0, 0, 0.45);
+    background: var(--input-bg-focus);
     box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.12);
 }
 
@@ -307,7 +307,7 @@
 
 .successCloseBtn {
     background: rgba(255, 255, 255, 0.06);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--border-glass);
     color: var(--text-main);
     padding: 0.7rem 2rem;
     border-radius: 12px;

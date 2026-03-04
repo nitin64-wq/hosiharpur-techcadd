@@ -1,0 +1,346 @@
+/* ═══════════════════════════════════════════════════════════
+   FOOTER — Matching Reference Design
+   ═══════════════════════════════════════════════════════════ */
+
+.footer {
+    position: relative;
+    margin-top: auto;
+}
+
+/* ─── Main Footer ─── */
+.footerMain {
+    background: var(--bg-dark);
+    border-top: 1px solid var(--border-glass);
+    padding: 4rem 0 2rem;
+    transition: background-color 0.4s ease;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 5%;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 0.8fr 1.2fr;
+    gap: 3rem;
+}
+
+/* ─── Brand Column ─── */
+.brandCol {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.footerLogo {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--text-main);
+    text-decoration: none;
+    margin-bottom: 1rem;
+    display: inline-block;
+    letter-spacing: -0.5px;
+    transition: color 0.3s ease;
+}
+
+.footerLogo:hover {
+    color: var(--primary);
+}
+
+.brandDesc {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    line-height: 1.7;
+    margin-bottom: 0.8rem;
+}
+
+/* ─── Contact Block ─── */
+.contactBlock {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    margin-top: 0.5rem;
+    margin-bottom: 1.2rem;
+}
+
+.contactItem {
+    display: flex;
+    gap: 0.5rem;
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+}
+
+.contactItem a {
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.contactItem a:hover {
+    color: var(--primary);
+}
+
+.contactLabel {
+    font-weight: 700;
+    color: var(--text-main);
+    white-space: nowrap;
+}
+
+/* ─── Social Icons ─── */
+.socialIcons {
+    display: flex;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+}
+
+.socialBtn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: 1px solid var(--border-glass);
+    color: white;
+}
+
+.socialBtn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+.whatsapp {
+    background: #25d366;
+}
+
+.whatsapp:hover {
+    background: #1fb855;
+}
+
+.phone {
+    background: #007bff;
+}
+
+.phone:hover {
+    background: #0056b3;
+}
+
+.email {
+    background: #6366f1;
+}
+
+.email:hover {
+    background: #4f46e5;
+}
+
+.location {
+    background: #ef4444;
+}
+
+.location:hover {
+    background: #dc2626;
+}
+
+.google {
+    background: var(--surface-glass);
+    border: 1px solid var(--border-glass);
+}
+
+.google:hover {
+    background: var(--surface-glass-hover);
+}
+
+/* ─── Links Columns ─── */
+.linksCol {
+    display: flex;
+    flex-direction: column;
+}
+
+.colTitle {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--text-main);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 1.5rem;
+    position: relative;
+    padding-bottom: 0.8rem;
+}
+
+.colTitle::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 30px;
+    height: 2px;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    border-radius: 2px;
+}
+
+.linkList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+}
+
+.linkList li a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.linkList li a:hover {
+    color: var(--primary);
+    transform: translateX(4px);
+}
+
+/* ─── Map Column ─── */
+.mapCol {
+    display: flex;
+    flex-direction: column;
+}
+
+.mapEmbed {
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--border-glass);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+    margin-bottom: 1.2rem;
+}
+
+.mapEmbed iframe {
+    display: block;
+}
+
+.legalLinks {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.legalLinks a {
+    color: var(--primary);
+    text-decoration: none;
+    font-size: 0.88rem;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.legalLinks a:hover {
+    color: var(--secondary);
+    text-decoration: underline;
+}
+
+/* ─── Bottom Bar ─── */
+.bottomBar {
+    background: var(--bg-dark);
+    border-top: 1px solid var(--border-glass);
+    padding: 1.5rem 0;
+    text-align: center;
+    transition: background-color 0.4s ease;
+}
+
+.bottomBar p {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    font-weight: 500;
+    margin: 0;
+}
+
+/* ─── Scroll to Top Button ─── */
+.scrollTop {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary), #00bfff);
+    color: white;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 6px 20px rgba(99, 102, 241, 0.3);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 90;
+}
+
+.scrollTopVisible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.scrollTop:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(99, 102, 241, 0.5);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   RESPONSIVE
+   ═══════════════════════════════════════════════════════════ */
+@media (max-width: 1024px) {
+    .grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 2.5rem;
+    }
+
+    .brandCol {
+        grid-column: 1 / -1;
+    }
+}
+
+@media (max-width: 768px) {
+    .grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .brandCol {
+        grid-column: auto;
+    }
+
+    .footerMain {
+        padding: 3rem 0 1.5rem;
+    }
+
+    .socialIcons {
+        gap: 0.5rem;
+    }
+
+    .scrollTop {
+        bottom: 20px;
+        right: 20px;
+        width: 40px;
+        height: 40px;
+    }
+}
+
+@media (max-width: 480px) {
+    .grid {
+        gap: 1.5rem;
+    }
+
+    .colTitle {
+        margin-bottom: 1rem;
+    }
+}

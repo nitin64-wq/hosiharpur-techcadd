@@ -1,7 +1,11 @@
+/* ═══════════════════════════════════════════════════════════
+   GALLERY — Premium Masonry + Lightbox
+   ═══════════════════════════════════════════════════════════ */
+
 .section {
-    padding: 6rem 5%;
+    padding: 8rem 5%;
     position: relative;
-    background: var(--bg-main);
+    overflow: hidden;
 }
 
 .container {
@@ -9,9 +13,10 @@
     margin: 0 auto;
 }
 
+/* ─── Header ─── */
 .header {
     text-align: center;
-    margin-bottom: 4rem;
+    margin-bottom: 3rem;
     max-width: 700px;
     margin-inline: auto;
 }
@@ -50,100 +55,363 @@
     line-height: 1.6;
 }
 
-.bentoGrid {
+/* ─── Filter Bar ─── */
+.filterBar {
+    display: flex;
+    justify-content: center;
+    gap: 0.6rem;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+}
+
+.filterBtn {
+    background: var(--surface-glass);
+    border: 1px solid var(--border-glass);
+    color: var(--text-muted);
+    padding: 0.6rem 1.4rem;
+    border-radius: 30px;
+    font-size: 0.88rem;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    letter-spacing: 0.3px;
+}
+
+.filterBtn:hover {
+    color: var(--text-main);
+    border-color: var(--border-glass-hover);
+    background: var(--surface-glass-hover);
+}
+
+.filterActive {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: white;
+    border-color: transparent;
+    box-shadow: 0 4px 16px rgba(99, 102, 241, 0.3);
+}
+
+.filterActive:hover {
+    color: white;
+    border-color: transparent;
+}
+
+/* ─── Grid ─── */
+.grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-auto-rows: 250px;
-    gap: 1.5rem;
+    grid-auto-rows: 220px;
+    gap: 1rem;
 }
 
-.bentoItem {
-    position: relative;
-    border-radius: 24px;
-    overflow: hidden;
-    isolation: isolate;
-    cursor: pointer;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-}
-
-/* Grid Spanning Classes */
-.tall {
-    grid-row: span 2;
-    grid-column: span 1;
-}
-
-.wide {
+/* Span variants */
+.col2 {
     grid-column: span 2;
+}
+
+.row2 {
+    grid-row: span 2;
+}
+
+.normal {
+    grid-column: span 1;
     grid-row: span 1;
 }
 
-.square {
-    grid-column: span 1;
-    grid-row: span 1;
+/* ─── Card ─── */
+.card {
+    position: relative;
+    border-radius: 18px;
+    overflow: hidden;
+    cursor: pointer;
+    isolation: isolate;
+}
+
+.card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 18px;
+    border: 1px solid var(--border-glass);
+    pointer-events: none;
+    z-index: 3;
+    transition: border-color 0.4s ease;
+}
+
+.card:hover::after {
+    border-color: rgba(99, 102, 241, 0.4);
 }
 
 .image {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-    filter: brightness(0.8) grayscale(20%);
+    transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1),
+        filter 0.5s ease;
+    filter: brightness(0.85) saturate(0.9);
 }
 
+.card:hover .image {
+    transform: scale(1.1);
+    filter: brightness(1) saturate(1.1);
+}
+
+/* ─── Overlay ─── */
 .overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(to top, rgba(10, 10, 15, 0.9) 0%, rgba(10, 10, 15, 0.2) 50%, rgba(10, 10, 15, 0) 100%);
+    background: linear-gradient(to top,
+            rgba(0, 0, 0, 0.85) 0%,
+            rgba(0, 0, 0, 0.2) 40%,
+            rgba(0, 0, 0, 0) 100%);
     display: flex;
     align-items: flex-end;
-    padding: 2rem;
+    justify-content: space-between;
+    padding: 1.5rem;
     opacity: 0;
     transition: opacity 0.4s ease;
+    z-index: 2;
 }
 
-.overlayText {
-    color: #ffffff;
-    font-size: 1.2rem;
-    font-weight: 700;
-    transform: translateY(20px);
-    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.bentoItem:hover .image {
-    transform: scale(1.08);
-    filter: brightness(1) grayscale(0%);
-}
-
-.bentoItem:hover .overlay {
+.card:hover .overlay {
     opacity: 1;
 }
 
-.bentoItem:hover .overlayText {
+.overlayContent {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    transform: translateY(15px);
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card:hover .overlayContent {
     transform: translateY(0);
 }
 
-/* Responsive adjustments */
+.categoryTag {
+    display: inline-block;
+    background: rgba(99, 102, 241, 0.25);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    color: #c4b5fd;
+    padding: 0.25rem 0.7rem;
+    border-radius: 8px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    width: fit-content;
+}
+
+.overlayTitle {
+    color: #ffffff;
+    font-size: 1.05rem;
+    font-weight: 700;
+    letter-spacing: -0.3px;
+}
+
+.zoomIcon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    flex-shrink: 0;
+    transform: translateY(15px) scale(0.8);
+    opacity: 0;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card:hover .zoomIcon {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+}
+
+.zoomIcon:hover {
+    background: rgba(99, 102, 241, 0.4);
+}
+
+/* Border glow effect on hover */
+.borderGlow {
+    position: absolute;
+    inset: -1px;
+    border-radius: 18px;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    filter: blur(8px);
+}
+
+.card:hover .borderGlow {
+    opacity: 0.4;
+}
+
+/* ─── Image Count ─── */
+.imageCount {
+    text-align: center;
+    margin-top: 2.5rem;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.imageCount span {
+    color: var(--primary);
+    font-weight: 700;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   LIGHTBOX
+   ═══════════════════════════════════════════════════════════ */
+.lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.lightboxContent {
+    position: relative;
+    max-width: 900px;
+    width: 100%;
+    max-height: 85vh;
+    border-radius: 20px;
+    overflow: hidden;
+    background: var(--bg-dark);
+    border: 1px solid var(--border-glass);
+    box-shadow: 0 40px 100px rgba(0, 0, 0, 0.6);
+}
+
+.lightboxImage {
+    width: 100%;
+    max-height: 70vh;
+    object-fit: cover;
+    display: block;
+}
+
+.lightboxInfo {
+    padding: 1.5rem 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.lightboxInfo h3 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--text-main);
+}
+
+.lightboxCategory {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: white;
+    padding: 0.3rem 0.8rem;
+    border-radius: 8px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.lightboxClose {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: white;
+    font-size: 1.1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    z-index: 2;
+}
+
+.lightboxClose:hover {
+    background: rgba(239, 68, 68, 0.4);
+    transform: rotate(90deg);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   RESPONSIVE
+   ═══════════════════════════════════════════════════════════ */
 @media (max-width: 1024px) {
-    .bentoGrid {
-        grid-template-columns: repeat(2, 1fr);
+    .grid {
+        grid-template-columns: repeat(3, 1fr);
+        grid-auto-rows: 200px;
     }
 
-    .tall {
-        grid-row: span 2;
-        grid-column: span 1;
+    .col2 {
+        grid-column: span 2;
     }
 }
 
-@media (max-width: 640px) {
-    .bentoGrid {
-        grid-template-columns: 1fr;
-        grid-auto-rows: 280px;
+@media (max-width: 768px) {
+    .section {
+        padding: 5rem 5%;
     }
 
-    .tall,
-    .wide,
-    .square {
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: 180px;
+        gap: 0.8rem;
+    }
+
+    .col2,
+    .row2 {
         grid-column: span 1;
         grid-row: span 1;
+    }
+
+    .card {
+        border-radius: 14px;
+    }
+
+    .card::after {
+        border-radius: 14px;
+    }
+
+    .borderGlow {
+        border-radius: 14px;
+    }
+
+    .filterBar {
+        gap: 0.4rem;
+    }
+
+    .filterBtn {
+        padding: 0.5rem 1rem;
+        font-size: 0.8rem;
+    }
+
+    .lightboxContent {
+        border-radius: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .grid {
+        grid-template-columns: 1fr;
+        grid-auto-rows: 220px;
     }
 }
